@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore&ensp;Sync</title>
+    <link rel="icon" href="exp.jpeg" type="image/x-icon">
+    <link rel="shortcut icon" href="exp.jpeg" type="image/x-icon">
+    <style>
+        body {
+            @import url(https://fonts.googleapis.com/css?family=Merriweather:300,300italic,regular,italic,700,700italic,900,900italic);
+            font-family: 'Merriweather', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        body.fade-in {
+            opacity: 1;
+        }
+
+        header {
+            background-color: linear-gradient(to right, #008F7A, #004d42);
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            border-bottom: 3px solid #fff;
+            background-image: url('header.jpeg');
+            background-repeat: no-repeat; 
+            background-size: cover; 
+            background-position: center center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 1em 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: #008F7A;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #004d42;
+        }
+
+        .home-content {
+            margin: 1em 20px;
+            padding: 20px;
+        }
+
+        .black-background {
+            margin: 1em 20px;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .text-content {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .signup-form {
+            flex: 1;
+            background-color: #000;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .signup-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .signup-form input {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        .signup-form button {
+            background-color: #015084;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .agree-checkbox {
+            margin-bottom: 16px;
+        }
+
+        .signin-alternatively {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .signin-option img {
+            max-width: 50px;
+            max-height: 50px;
+            margin-bottom: 8px;
+        }
+
+        footer {
+            background-color: #1c1c1c;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+        #styling{
+            /*@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);*/
+            @import url(https://fonts.googleapis.com/css?family=Palanquin+Dark:regular,500,600,700);
+            font-family: 'Palanquin', sans-serif;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 style="text-shadow: 1px 1px grey; background-color: #112636; opacity: 0.75; padding: 35px; font-size: 60px;">Explore&ensp;Sync</h1>
+        <nav>
+            <a href="main.html">Home</a>
+            <a href="options.html">Features</a>
+            <a href="contact.html">Contact</a>
+            <a href="help.html">Help</a>
+        </nav>
+    </header>
+
+    <div class="home-content" id="home">
+        <h2>Welcome to Explore&ensp;Sync</h2>
+        <p>Your go-to platform for powerful data exploration and visualization.</p>
+    </div>
+
+    <div class="black-background">
+        <div class="text-content">
+            <br><br>
+            <h1 style="padding-left: 15px;">Level up your data analysis</h1>
+            <h1 style="padding-left: 15px;">with a powerful data visualization </h1>
+            <h1 style="padding-left: 15px;">Software.</h1><br><br>
+            <h3 style="padding-left: 15px; word-spacing: 5px; letter-spacing: 1px; padding-right: 30px;">Data visualization software helps you visualize your data to discover underlying trends, gain meaningful insights, and make data-driven decisions. Transform your data and make the right business decisions with ExploreSync Analytics, the best data visualization tool in the market.
+            </h3>
+        </div>
+        <div class="signup-form">
+            <h2>Sign Up</h2>
+            <form>
+                <label for="business-email">Business Email:</label>
+                <input type="email" id="business-email" name="business-email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="re-enter-password">Re-enter Password:</label>
+                <input type="password" id="re-enter-password" name="re-enter-password" required>
+
+                <label for="phone-number">Phone Number:</label>
+                <input type="tel" id="phone-number" name="phone-number" required>
+
+                <div class="agree-checkbox">
+                    <input type="checkbox" id="agree" name="agree" required><label for="agree">I agree to the Terms of Service and Privacy Policy.</label>
+                </div>
+
+                <button type="submit">Sign Up for Free</button>
+            </form>
+            <div class="signin-alternatively">
+                <div class="signin-option">
+                    <a href="https://accounts.google.com/b/0/AddMailService" target="_blank"><img src="g.jpeg" alt="Sign In Option 1">&emsp;</a>
+                    <a href="https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin" target="_blank"><img src="in.png" alt="Sign In Option 2">&emsp;</a>
+                    <a href="https://account.microsoft.com/account/manage-my-account" target="_blank"><img src="m.png" alt="Sign In Option 3"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2023 Explore&ensp;Sync. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+
+</body>
+</html>

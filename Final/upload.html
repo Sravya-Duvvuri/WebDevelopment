@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore&ensp;Sync</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            margin: 20px;
+        }
+
+        header {
+            background-color: linear-gradient(to right, #008F7A, #004d42);
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+            border-bottom: 3px solid #fff;
+            background-image: url('header.jpeg');
+            background-repeat: no-repeat; 
+            background-size: cover; 
+            background-position: center center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 1em 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: #008F7A;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #004d42;
+        }
+
+        #upload-container {
+            margin-bottom: 20px;
+        }
+
+        #container {
+            background-color: #e9e8e8; /* Grey area background color */
+            padding: 20px;
+            border-radius: 5px;
+            overflow: hidden; /* Hide overflow content */
+        }
+
+        #output-container {
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #004d42;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        th:hover {
+            background-color: #002e27;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #015084;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #002f5b;
+        }
+
+        #sortSelect {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 style="text-shadow: 1px 1px grey; background-color: #112636; opacity: 0.75; padding: 35px; font-size: 60px;">Explore&ensp;Sync</h1>
+        <nav>
+            <a href="main.html">Home</a>
+            <a href="options.html">Features</a>
+            <a href="contact.html">Contact</a>
+            <a href="help.html">Help</a>
+        </nav>
+    </header>
+    <br><br>
+    <div id="upload-container">
+        <input type="file" id="fileInput" accept=".csv, .xls, .xlsx" />
+        <button onclick="applySorting()">Apply Sorting</button>
+        <label for="sortSelect">Select Sorting:</label>
+        <select id="sortSelect">
+            <option value="default">Default</option>
+            <option value="alphabetical">Alphabetical (A to Z)</option>
+            <option value="reverseAlphabetical">Reverse Alphabetical (Z to A)</option>
+            <option value="chronological">Chronological (Oldest to Newest)</option>
+            <option value="reverseChronological">Reverse Chronological (Newest to Oldest)</option>
+            <option value="numericAscending">Numeric Ascending</option>
+            <option value="numericDescending">Numeric Descending</option>
+            <option value="nameAlphabetical">Name Alphabetical (A to Z)</option>
+            <option value="nameReverseAlphabetical">Name Reverse Alphabetical (Z to A)</option>
+            <option value="switchTable">Switch Table</option>
+        </select>
+    </div>
+
+    <div id="container">
+        <div id="output-container">
+            <table id="outputTable"></table>
+        </div>
+    </div>
+
+    <script>
+        function applySorting() {
+            const fileInput = document.getElementById('fileInput');
+            const sortSelect = document.getElementById('sortSelect');
+            const outputContainer = document.getElementById('output-container');
+            const container = document.getElementById('container');
+            const outputTable = document.getElementById('outputTable');
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const data = e.target.result;
+                    const rows = data.split('\n');
+                    const header = rows[0].split(',');
+
+                    // Remove previous table content
+                    outputTable.innerHTML = '';
+
+                    // Create table header
+                    const headerRow = document.createElement('tr');
+                    header.forEach(column => {
+                        const th = document.createElement('th');
+                        th.textContent = column;
+                        headerRow.appendChild(th);
+                    });
+                    outputTable.appendChild(headerRow);
+
+                    // Create table rows
+                    for (let i = 1; i < rows.length; i++) {
+                        const row = rows[i].split(',');
+                        const tr = document.createElement('tr');
+
+                        row.forEach(column => {
+                            const td = document.createElement('td');
+                            td.textContent = column;
+                            tr.appendChild(td);
+                        });
+
+                        outputTable.appendChild(tr);
+                    }
+
+                    // Apply selected sorting
+                    switch (sortSelect.value) {
+                        case 'alphabetical':
+                            sortTable(1);
+                            break;
+                        case 'reverseAlphabetical':
+                            sortTable(1, true);
+                            break;
+                        case 'chronological':
+                            sortTable(0);
+                            break;
+                        case 'reverseChronological':
+                            sortTable(0, true);
+                            break;
+                        case 'numericAscending':
+                            sortTable(1, false, true);
+                            break;
+                        case 'numericDescending':
+                            sortTable(1, true, true);
+                            break;
+                        case 'nameAlphabetical':
+                            sortTable(0);
+                            break;
+                        case 'nameReverseAlphabetical':
+                            sortTable(0, true);
+                            break;
+                        case 'switchTable':
+                            switchTable();
+                            break;
+                        // Add more cases for additional sorting options
+
+                        default:
+                            break;
+                    }
+
+                    // Display the sorted table
+                    outputContainer.style.display = 'block';
+                    container.style.background = 'none'; // Remove grey background when table is displayed
+                };
+
+                reader.readAsText(file);
+            }
+        }
+
+        function sortTable(columnIndex, reverse = false, isNumeric = false) {
+            const table = document.getElementById('outputTable');
+            const rows = Array.from(table.rows);
+
+            // Sort the rows excluding the header
+            rows.slice(1).sort((a, b) => {
+                const aValue = a.cells[columnIndex].textContent;
+                const bValue = b.cells[columnIndex].textContent;
+
+                if (isNumeric) {
+                    // If values are numbers, perform numeric comparison
+                    return reverse ? bValue - aValue : aValue - bValue;
+                } else {
+                    // If values are not numbers, perform string comparison
+                    return reverse ? bValue.localeCompare(aValue) : aValue.localeCompare(bValue);
+                }
+            }).forEach(row => table.appendChild(row));
+        }
+
+        function switchTable() {
+            const table = document.getElementById('outputTable');
+            const rows = Array.from(table.rows);
+
+            // Switch left and right columns
+            rows.forEach(row => {
+                const cells = Array.from(row.cells);
+                const mid = Math.floor(cells.length / 2);
+                for (let i = 0; i < mid; i++) {
+                    const temp = cells[i].textContent;
+                    cells[i].textContent = cells[mid + i].textContent;
+                    cells[mid + i].textContent = temp;
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
