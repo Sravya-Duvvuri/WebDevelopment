@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <title>Amrita Vishwa Vidyapeetham</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #E6E6E6;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .header {
+            background-color: #5e0534;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .tabs {
+            background-color: #990c57;
+            overflow: hidden;
+        }
+
+        .tab {
+            float: left;
+            display: block;
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #0f05a4a2;
+        }
+
+        .content {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #1d2227;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .content img {
+            animation: fadeInImage 2s ease-in-out;
+        }
+
+        @keyframes fadeInImage {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table, th, td {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header" style="background-image: url('bg1.jpg');
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center;">
+        <h1 style="text-shadow: 1px 1px grey; background-color: #5e0534; opacity: 0.75; padding: 35px;">Amrita Vishwa Vidyapeetham</h1>
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+            <a class="tab" href="/home">Home</a>
+            <a class="tab" href="/search">Search</a>
+            <a class="tab" href="/view_profile">View Profile</a>
+            <a class="tab" href="/alumni_meets">Alumni Meets</a>
+            <a class="tab" href="/chat/<email>">Chat</a>
+            <a class="tab" href="/help">Help</a>
+            <a class="tab" href="/logout">Logout</a>
+
+        </div>
+
+        <div class="content">
+            <h2>Your Alumni Meet RSVPs:</h2>
+            <table>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Event Date</th>
+                    <th>RSVP Status</th>
+                    <th>Picture Link</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td>Alumni Meet 1</td>
+                    <td>2022-12-15</td>
+                    <td>Attending</td>
+                    <td><a href="https://drive.google.com/drive/folders/1kOulLnUCSXN_A9ibleU5FEPpc_H_Oxam" target="_blank">View Pictures</a></td>
+                    <td><a href="/journalpage">Notes/Journal</a></td>
+
+
+                </tr>
+                <tr>
+                    <td>Alumni Meet 2</td>
+                    <td>2021-02-20</td>
+                    <td>Not Attending</td>
+                    <td style="text-align: center;">-</td>
+                    <td style="text-align: center;">-</td>
+                </tr>
+                <tr>
+                    <td>Alumni Meet 3</td>
+                    <td>2020-07-10</td>
+                    <td>Attending</td>
+                    <td><a href="https://drive.google.com/drive/folders/1kOulLnUCSXN_A9ibleU5FEPpc_H_Oxam" target="_blank">View Pictures</a></td>
+                    <td><a href="/journalpage">Notes/Journal</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2023 Amrita Vishwa Vidyapeetham
+    </div>
+</body>
+
+</html>

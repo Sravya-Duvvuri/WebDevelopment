@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <title>Amrita Vishwa Vidyapeetham - Alumni Search</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #E6E6E6;
+            animation: fadeIn 0.75s ease-in;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .header {
+            background-color: #5e0534;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .tabs {
+            background-color: #990c57;
+            overflow: hidden;
+        }
+
+        .tab {
+            float: left;
+            display: block;
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #0f05a4a2;
+        }
+
+        .content {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            padding: 8px;
+            width: 40%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-button {
+            padding: 8px;
+            background-color: #990c57;
+            color: #fff;
+            border: 1px solid #990c57;
+            border-radius: 5px;
+        }
+
+        .search-button:hover {
+            background-color: #0f05a4a2;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .filter-label {
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+        }
+
+        .filter-select {
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .alumni-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .alumni-table th,
+        .alumni-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .alumni-table th {
+            background-color: #990c57;
+            color: #fff;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #990c57;
+            background-color: rgb(235, 234, 234);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header" style="background-image: url('bg1.jpg');
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center;">
+        <h1 style="text-shadow: 1px 1px grey; background-color: #5e0534; opacity: 0.75; padding: 35px;">Amrita Vishwa Vidyapeetham</h1>
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+            <a class="tab" href="home_student.html">Home</a>
+            <a class="tab" href="Search_student.html">Search</a>
+            <a class="tab" href="Alumnimeet_student.html">Alumni Meets</a>
+            <a class="tab" href="Chat_student.html">Chat</a>
+            <a class="tab" href="help_student.html">Help</a>
+            <a class="tab" href="login.html">Logout</a>
+        </div>
+
+        <div class="content">
+            <h1 style="text-shadow: 1px 1px grey;">Alumni Search</h1>
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search alumni by...">
+                <input type="button" class="search-button" value="Search">
+                <br><br>
+                <div class="filters">
+                    <p class="filter-label">By Department:</p>
+                    <select class="filter-select">
+                        <option value="all">All</option>
+                    </select>
+
+                    <p class="filter-label">By City:</p>
+                    <select class="filter-select">
+                        <option value="all">All</option>
+                    </select>
+
+                    <p class="filter-label">By Job:</p>
+                    <select class="filter-select">
+                        <option value="all">All</option>
+                    </select>
+
+                    <p class="filter-label">By Batch:</p>
+                    <select class="filter-select">
+                        <option value="all">All</option>
+                    </select>
+                </div>
+            </div>
+            <table class="alumni-table">
+                <thead>
+                    <tr>
+                        <th>Batch</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>City</th>
+                        <th>Job</th>
+                        <th>CGPA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2016-20</td>
+                        <td><a href="viewotherprofile.html">Rahul Verma</a></td>
+                        <td>Computer Science</td>
+                        <td>Mumbai</td>
+                        <td>Software Engineer</td>
+                        <td>8.23</td>
+                    </tr>
+                    <tr>
+                        <td>2017-21</td>
+                        <td>Divya Singh</td>
+                        <td>Electrical Engineering</td>
+                        <td>Bangalore</td>
+                        <td>Data Analyst</td>
+                        <td>7.98</td>
+                    </tr>
+                    <tr>
+                        <td>2015-19</td>
+                        <td>Aditi Sharma</td>
+                        <td>Mechanical Engineering</td>
+                        <td>Delhi</td>
+                        <td>Project Manager</td>
+                        <td>8.45</td>
+                    </tr>
+                    <tr>
+                        <td>2018-22</td>
+                        <td>Rajesh Kumar</td>
+                        <td>Chemistry</td>
+                        <td>Hyderabad</td>
+                        <td>Research Scientist</td>
+                        <td>7.75</td>
+                    </tr>
+                    <tr>
+                        <td>2016-20</td>
+                        <td>Priya Gupta</td>
+                        <td>Information Technology</td>
+                        <td>Kolkata</td>
+                        <td>Software Developer</td>
+                        <td>8.90</td>
+                    </tr>
+                    <tr>
+                        <td>2017-21</td>
+                        <td>Arun Patel</td>
+                        <td>Civil Engineering</td>
+                        <td>Chennai</td>
+                        <td>Structural Engineer</td>
+                        <td>7.62</td>
+                    </tr>
+                    <tr>
+                        <td>2015-19</td>
+                        <td>Meera Reddy</td>
+                        <td>Chemical Engineering</td>
+                        <td>Pune</td>
+                        <td>Chemist</td>
+                        <td>8.15</td>
+                    </tr>
+                    <tr>
+                        <td>2018-22</td>
+                        <td>Sanjay Joshi</td>
+                        <td>Physics</td>
+                        <td>Mumbai</td>
+                        <td>Researcher</td>
+                        <td>7.89</td>
+                    </tr>
+                    <tr>
+                        <td>2016-20</td>
+                        <td>Deepa Sharma</td>
+                        <td>Electronics Engineering</td>
+                        <td>Hyderabad</td>
+                        <td>Electronics Engineer</td>
+                        <td>8.34</td>
+                    </tr>
+                    <tr>
+                        <td>2017-21</td>
+                        <td>Rahul Mehta</td>
+                        <td>Computer Science</td>
+                        <td>Bangalore</td>
+                        <td>Software Developer</td>
+                        <td>7.91</td>
+                    </tr>
+                    <tr>
+                        <td>2015-19</td>
+                        <td>Swati Srinivasan</td>
+                        <td>Electrical Engineering</td>
+                        <td>Delhi</td>
+                        <td>Electrical Engineer</td>
+                        <td>8.02</td>
+                    </tr>
+                    <tr>
+                        <td>2018-22</td>
+                        <td>Vivek Kumar</td>
+                        <td>Mechanical Engineering</td>
+                        <td>Pune</td>
+                        <td>Mechanical Engineer</td>
+                        <td>7.77</td>
+                    </tr>
+                    <tr>
+                        <td>2016-20</td>
+                        <td>Sanjana Singh</td>
+                        <td>Chemistry</td>
+                        <td>Kolkata</td>
+                        <td>Chemist</td>
+                        <td>8.11</td>
+                    </tr>
+                    <tr>
+                        <td>2017-21</td>
+                        <td>Aditya Shah</td>
+                        <td>Physics</td>
+                        <td>Chennai</td>
+                        <td>Physicist</td>
+                        <td>7.88</td>
+                    </tr>
+                    <tr>
+                        <td>2015-19</td>
+                        <td>Asha Kumar</td>
+                        <td>Computer Science</td>
+                        <td>Mumbai</td>
+                        <td>Software Engineer</td>
+                        <td>8.45</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <title>Amrita Vishwa Vidyapeetham</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #E6E6E6;
+            animation: fadeIn 1s ease-in-out; /* Add a fade-in animation for the entire page */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .header {
+            background-color: #5e0534;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .tabs {
+            background-color: #990c57;
+            overflow: hidden;
+        }
+
+        .tab {
+            float: left;
+            display: block;
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #0f05a4a2;
+        }
+
+        .content {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #1d2227;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Add a longer fade-in animation for the image */
+        .content img {
+            animation: fadeInImage 2s ease-in-out;
+        }
+
+        @keyframes fadeInImage {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header" style="background-image: url('bg1.jpg');
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center;">
+        <h1 style="text-shadow: 1px 1px grey; background-color: #5e0534; opacity: 0.75; padding: 35px;">Amrita Vishwa Vidyapeetham</h1>
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+            <a class="tab" href="/home">Home</a>
+            <a class="tab" href="/search">Search</a>
+            <a class="tab" href="/view_profile">View Profile</a>
+            <a class="tab" href="/alumni_meets">Alumni Meets</a>
+            <a class="tab" href="/chat/<email>">Chat</a>
+            <a class="tab" href="/help">Help</a>
+            <a class="tab" href="/logout">Logout</a>
+
+        </div>
+
+        <div class="content">
+            <h2>Journal Your Alumni Meet Details!</h2><br>
+            <form action="/alumni_meets">
+                <textarea name="Journal" id="text" cols="120" rows="10" style="border-color: #cfcece; border-radius: 10px;"></textarea><br><br>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2023 Amrita Vishwa Vidyapeetham
+    </div>
+</body>
+
+</html>

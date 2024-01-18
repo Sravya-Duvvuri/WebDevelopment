@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <title>Amrita Vishwa Vidyapeetham - Alumni Chat</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #E6E6E6;
+            animation: fadeIn 0.7s ease-in-out; /* Add a fade-in animation for the entire page */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        .header {
+            background-color: #5e0534;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .tabs {
+            background-color: #990c57;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .tab {
+            /* Float is not needed, and remove inline-block */
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #0f05a4a2;
+        }
+
+        .content {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .chat-box {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .emoji-icon {
+            font-size: 24px;
+            color: grey; /* Grey color for the emoji */
+            margin-right: 10px;
+            cursor: pointer; /* Add a cursor pointer to indicate it's clickable */
+        }
+
+        .message-input {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 70%;
+            margin-right: 10px;
+        }
+
+        .send-button {
+            background-color: #990c57;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .send-button:hover {
+            background-color: #5e0534;
+        }
+
+        /* Styles for the emoji pop-up */
+        .emoji-popup {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .emoji-popup.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header" style="background-image: url('bg1.jpg');
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center;">
+        <h1 style="text-shadow: 1px 1px grey; background-color: #5e0534; opacity: 0.75; padding: 35px;">Amrita Vishwa Vidyapeetham</h1>
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+            <a class="tab" href="home_student.html">Home</a>
+            <a class="tab" href="Search_student.html">Search</a>
+            <a class="tab" href="Alumnimeet_student.html">Alumni Meets</a>
+            <a class="tab" href="Chat_student.html">Chat</a>
+            <a class="tab" href="help_student.html">Help</a>
+            <a class="tab" href="login.html">Logout</a>
+        </div>
+
+        <div class="content">
+            <h1 style="text-shadow: 1px 1px grey;">Chat</h1><br>
+            <div class="chat-box" id="chat-box">
+            </div><br><br>
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <span class="emoji-icon" onclick="toggleEmojiPopup()"><img src="emo.jpg" alt="emojis" width="33px"></span>
+                <input type="text" class="message-input" placeholder="Type your message...">
+                <button class="send-button" onclick="sendMessage()">Send</button>
+            </div>
+
+            <!-- Emoji pop-up -->
+            <div class="emoji-popup" id="emoji-popup">
+                    <span style="cursor: pointer;" onclick="insertEmoji('🙂')">🙂</span>
+                    <span style="cursor: pointer;" onclick="insertEmoji('😀')">😀</span>
+                    <span style="cursor: pointer;" onclick="insertEmoji('❤️')">❤️</span>
+                    <span style="cursor: pointer;" onclick="insertEmoji('👌')">👌</span>
+                    <span style="cursor: pointer;" onclick="insertEmoji('👍')">👍</span>
+                    <span style="cursor: pointer;" onclick="insertEmoji('😊')">😊</span>
+                    <span style="cursor: pointer;" onclick="insertEmoji('😂')">😂</span>
+                    <span style="cursor: pointer;" onclick="insertEmoji('🤣')">🤣</span>
+                    <span style="cursor: pointer;" onclick="insertEmoji('😒')">😒</span>
+                    <span style="cursor: pointer;" onclick="insertEmoji('🤨')">🤨</span>
+                    <span style="cursor: pointer;" onclick="insertEmoji('😘')">😘</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to add a new message to the chat box
+        function sendMessage() {
+            const messageInput = document.querySelector('.message-input');
+            const message = messageInput.value.trim();
+
+            if (message !== '') {
+                const chatBox = document.getElementById('chat-box');
+                const messageDiv = document.createElement('div');
+                messageDiv.textContent = message;
+                chatBox.appendChild(messageDiv);
+                messageInput.value = '';
+                messageInput.focus();
+            }
+        }
+
+        // Function to toggle the emoji pop-up
+        function toggleEmojiPopup() {
+            const emojiPopup = document.getElementById('emoji-popup');
+            emojiPopup.classList.toggle('active');
+        }
+
+        // Function to insert an emoji into the chat input
+        function insertEmoji(emoji) {
+            const messageInput = document.querySelector('.message-input');
+            messageInput.value += emoji;
+        }
+    </script>
+</body>
+
+</html>

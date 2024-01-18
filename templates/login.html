@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        .container {
+            box-shadow: 2px 2px 10px rgb(198, 196, 196);
+            padding: 20px;
+            padding-top: 30px;
+            align-items: center;
+            background-color: black;
+            opacity: 0.8;
+            color: #ffffff;
+            border-radius: 10px;
+            width: 35%;
+            margin: 0 auto;
+        }
+
+        .container td {
+            padding: 3px;
+        }
+
+        input,
+        select {
+            padding: 5px;
+        }
+
+        .slider {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-size: cover;
+            background-position: center;
+            background-image: url({{url_for("static", filename="bg1.jpg")}});
+            transition: opacity 4s;
+            opacity: 0;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+
+        * {
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-shadow: rgb(114, 187, 247);
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+
+<script>
+    window.addEventListener("load", () => {
+        const slide = document.querySelector('.slide');
+        slide.classList.add('fade-in');
+        changeImage(); // Call the function to start the image slider
+    });
+
+    function validateForm() {
+        const email = document.getElementById("Amemail").value;
+        const password = document.getElementById("Password").value;
+        const emailError = document.getElementById("emailError");
+        const passwordError = document.getElementById("passwordError");
+
+        emailError.innerText = "";
+        passwordError.innerText = "";
+
+        const emailPattern = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+
+        if (!emailPattern.test(email)) {
+            emailError.innerText = "Please enter a valid email address.";
+            return false;
+        }
+
+        if (password.length < 10) {
+            passwordError.innerText = "Password must be at least 10 characters.";
+            return false;
+        }
+
+        return true;
+    }
+
+    function changeImage() {
+        const slide = document.querySelector('.slide');
+        const images = ['{{ url_for("static", filename="bg1.jpg") }}', '{{ url_for("static", filename="bg2.jpg") }}'];
+        let index = 0;
+
+        setInterval(() => {
+            slide.style.backgroundImage = `url("${images[index]}")`;
+            index = (index + 1) % images.length;
+        }, 4000);
+    }
+</script>
+
+</head>
+
+<body>
+    <br>
+
+    <div class="container" style="margin-top: 3%;">
+        <h1 style="text-align: center; font-size: 40px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Sign - in</h1>
+
+        <div style="margin-left: 17%;">
+            <form id="registrationForm" method="post" action="{{ url_for('login') }}" onmouseup="return validateForm()">
+                <div>
+                    <label for="username"><br>Username <br><br></label>
+                    <input type="text" id="username" name="username" placeholder="xyz15" size="30" maxlength="50" min="8" required>
+                </div>
+                <div>
+                    <label for="Password"><br>Password: <br><br></label>
+                    <input type="password" id="Password" name="Password" placeholder="**********" maxlength="16" size="30" required>
+                    <p class="error" id="passwordError"></p>
+                </div>
+                <br>
+                <div style="margin-left: 18%;">
+                    <button type="submit" style="background-color: darkgray; padding: 3px; padding-left: 6px; padding-right: 6px;">Submit</button>
+                    <span>&emsp;&ensp;</span>
+                    <button type="reset" style="background-color: darkgray; padding: 3px; padding-left: 6px; padding-right: 6px;">Reset</button>
+                </div>
+                <div><br>_________________________________ <br></div>
+                <br>
+                <div style="margin-left: 8%; margin-bottom: 7%;">
+                    <button type="button" style="background-color: darkgray; padding-bottom: 3px; padding-left: 6px; padding-right: 6px;">Sign In Using Microsoft 365&ensp;<img src="{{url_for("static", filename="cloud.png")}}" alt="Microsoft365" width="15px" style="padding-top: 3px;"></button>                </div>
+            </form>
+        </div>
+    </div>
+    <div class="slider">
+        <div class="slide"></div>
+    </div>
+</body>
+
+</html>

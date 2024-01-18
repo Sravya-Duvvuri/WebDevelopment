@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <title>Amrita Vishwa Vidyapeetham</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #E6E6E6;
+        }
+
+        .header {
+            background-color: #5e0534;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .tabs {
+            background-color: #990c57;
+            overflow: hidden;
+        }
+
+        .tab {
+            float: left;
+            display: block;
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #0f05a4a2;
+        }
+
+        .content {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 1 forwards; /* Added 'forwards' to keep opacity at 1 */
+        }
+
+        .footer {
+            background-color: #1d2227;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .alumni-meet {
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            padding-left: 15px;
+            padding-right: 15px;
+            display: flex;
+            justify-content: space-between;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 1 forwards; /* Added 'forwards' to keep opacity at 1 */
+        }
+
+        .alumni-meet h3 {
+            margin: 0;
+        }
+
+        .alumni-meet img {
+            width: 200px;
+            height: auto;
+            align-self: center;
+            margin-right: 20px;
+        }
+
+        .alumni-meet p {
+            flex: 1;
+            margin-left: 20px;
+            align-self: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+        .link {
+            color: #000;
+            transition: color 0.3s;
+        }
+
+        .link:hover {
+            color: #990c57;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header" style="background-image: url('bg1.jpg');
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center;">
+        <h1 style="text-shadow: 1px 1px grey; background-color: #5e0534; opacity: 0.75; padding: 35px;">Amrita Vishwa Vidyapeetham</h1>
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+            <a class="tab" href="home_student.html">Home</a>
+            <a class="tab" href="Search_student.html">Search</a>
+            <a class="tab" href="Alumnimeet_student.html">Alumni Meets</a>
+            <a class="tab" href="Chat_student.html">Chat</a>
+            <a class="tab" href="help_student.html">Help</a>
+            <a class="tab" href="login.html">Logout</a>
+        </div>
+
+        <div class="content" style="padding-left: 50px; padding-right: 50px;">
+            <h1 style="text-shadow: 1px 1px grey;">Alumni Meets</h1>
+            <div class="alumni-meet">
+                <img src="p1.jpg" alt="2022 Alumni Meet">
+                <h3>2022 Alumni Meet</h3>
+                <p>
+                    Description for the 2022 Alumni Meet.
+                </p>
+            </div>
+            <br>
+            <div class="alumni-meet">
+                <img src="p2.jpg" alt="2021 Alumni Meet">
+                <h3>2021 Alumni Meet</h3>
+                <p>
+                    Description for the 2021 Alumni Meet.
+                </p>
+            </div>
+            <br>
+            <div class="alumni-meet">
+                <img src="p3.jpg" alt="2020 Alumni Meet">
+                <h3>2020 Alumni Meet</h3>
+                <p>
+                    Description for the 2020 Alumni Meet.
+                </p>
+            </div>
+            <br>
+            <div class="alumni-meet">
+                <img src="p4.jpeg" alt="2019 Alumni Meet">
+                <h3>2019 Alumni Meet</h3>
+                <p>
+                    Description for the 2019 Alumni Meet.
+                </p>
+            </div>
+            <br>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2023 Amrita Vishwa Vidyapeetham
+    </div>
+</body>
+
+</html>

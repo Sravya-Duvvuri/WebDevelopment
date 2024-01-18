@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        .container {
+            box-shadow: 2px 2px 10px rgb(198, 196, 196);
+            padding: 20px;
+            padding-top: 30px;
+            align-items: center;
+            background-color: black;
+            opacity: 0.8;
+            color: #ffffff;
+            border-radius: 10px;
+            width: 35%;
+            margin: 0 auto;
+        }
+
+        .container td {
+            padding: 3px;
+        }
+
+        input,
+        select {
+            padding: 5px;
+        }
+
+        .slider {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-size: cover;
+            background-position: center;
+            background-image: url({{url_for("static", filename="bg1.jpg")}});
+            transition: opacity 4s;
+            opacity: 0;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+
+        * {
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-shadow: rgb(114, 187, 247);
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+
+    <script>
+		window.addEventListener("load", () => {
+            const slide = document.querySelector('.slide');
+			console.log(slide)
+            slide.classList.add('fade-in');
+        })
+
+        function validateForm() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("Password").value;
+            const confirm = document.getElementById("Confirm").value;
+            const batch = document.getElementById("Batch").value;
+            const department = document.getElementById("Department").value;
+            const dob = document.getElementById("dob").value;
+            const cgpa = document.getElementById("cgpa").value;
+            const student = document.getElementById("Student").checked;
+            const alumni = document.getElementById("Alumni").checked;
+            const faculty = document.getElementById("Faculty").checked;
+
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("emailError");
+            const passwordError = document.getElementById("passwordError");
+            const confirmError = document.getElementById("confirmError");
+            const batchError = document.getElementById("batchError");
+            const departmentError = document.getElementById("departmentError");
+            const dobError = document.getElementById("dobError");
+            const cgpaError = document.getElementById("cgpaError");
+            const userTypeError = document.getElementById("userTypeError");
+
+            nameError.innerText = "";
+            emailError.innerText = "";
+            passwordError.innerText = "";
+            confirmError.innerText = "";
+            batchError.innerText = "";
+            departmentError.innerText = "";
+            dobError.innerText = "";
+            cgpaError.innerText = "";
+            userTypeError.innerText = "";
+
+            const emailPattern = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+
+            if (name.length < 3) {
+                nameError.innerText = "Please enter a valid name.";
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                emailError.innerText = "Please enter a valid email address.";
+                return false;
+            }
+
+            if (password.length < 10) {
+                passwordError.innerText = "Password must be at least 10 characters.";
+                return false;
+            }
+
+            if (password !== confirm) {
+                confirmError.innerText = "Passwords do not match.";
+                return false;
+            }
+
+            if (batch.length < 7) {
+                batchError.innerText = "Please enter a valid batch (e.g., 2016-2020).";
+                return false;
+            }
+
+            if (department === "") {
+                departmentError.innerText = "Please select a department.";
+                return false;
+            }
+
+            // You might want to add more comprehensive date validation
+            if (!dob) {
+                dobError.innerText = "Please enter your date of birth.";
+                return false;
+            }
+
+            if (cgpa < 0 || cgpa > 10) {
+                cgpaError.innerText = "CGPA should be between 0 and 10.";
+                return false;
+            }
+
+            if (!student && !alumni && !faculty) {
+                userTypeError.innerText = "Please select at least one user type.";
+                return false;
+            }
+
+            return true;
+        }
+
+		window.addEventListener("load", () => {
+            changeImage();
+        })
+
+        function changeImage() {
+            const slide = document.querySelector('.slide');
+            const images = ['{{ url_for("static", filename="bg1.jpg") }}', '{{ url_for("static", filename="bg2.jpg") }}'];
+            let index = 0;
+
+            setInterval(() => {
+				slide.style.backgroundImage = `url("${images[index]}")`;
+				index = (index + 1) % images.length;
+			}, 4000);  // Change image every 4 seconds
+        }
+    </script>
+</head>
+
+<body>
+    <br>
+
+    <div class="container" style="margin-top: 3%;">
+        <h1 style="text-align: center; font-size: 40px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Register</h1>
+
+        <div style="margin-left: 17%;">
+            <form method="post" action="{{ url_for('register') }}" onmouseout="validateForm()">
+                <div>
+                    <label for="name"><br>Name: <br><br></label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" size="30" maxlength="50" required>
+                    <p class="error" id="nameError"></p>
+                </div>
+                <div>
+                    <label for="email"><br>Email-ID: <br><br></label>
+                    <input type="email" id="email" name="email" placeholder="xyz@gmail.com" size="30" maxlength="50" required>
+                    <p class="error" id="emailError"></p>
+                </div>
+                <div>
+                    <label for="username"><br>Username: <br><br></label>
+                    <input type="text" id="username" name="username" placeholder="xyz15" size="30" maxlength="50" min="8" required>
+                </div>
+                <div>
+                    <label for="Password"><br>Set Password: <br><br></label>
+                    <input type="password" id="Password" name="Password" placeholder="**********" maxlength="16" size="30" required>
+                    <p class="error" id="passwordError"></p>
+                </div>
+                <div>
+                    <label for="Confirm"><br>Confirm Password: <br><br></label>
+                    <input type="password" id="Confirm" name="confirm" placeholder="**********" size="30" maxlength="16" required>
+                    <p class="error" id="confirmError"></p>
+                </div>
+                <div>
+                    <label for="Batch"><br>Batch: <br><br></label>
+                    <input type="text" id="Batch" name="Batch" placeholder="2016-20" required>
+                    <p class="error" id="batchError"></p>
+                </div>
+                <div>
+                    <label for="Department"><br>Department: <br><br></label>
+                    <select id="Department" name="Department" required>
+                        <option value="" disabled selected>Select Department</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="Electronics and Communication">Electronics and Communication</option>
+                        <!-- Add more departments as needed -->
+                    </select>
+                    <p class="error" id="departmentError"></p>
+                </div>
+                <div>
+                    <label for="dob"><br>Date of Birth: <br><br></label>
+                    <input type="date" id="dob" name="dob" required>
+                    <p class="error" id="dobError"></p>
+                </div>
+                <div>
+                    <label for="cgpa"><br>CGPA: <br><br></label>
+                    <input type="number" id="cgpa" name="cgpa" step="0.01" placeholder="8.50" min="0" max="10" required>
+                    <p class="error" id="cgpaError"></p>
+                </div>
+                <div>
+                    <label><br>User Type: <br><br></label>
+                    <input type="radio" id="Student" name="UserType" value="Student"> Student
+                    <input type="radio" id="Alumni" name="UserType" value="Alumni"> Alumni
+                    <input type="radio" id="Faculty" name="UserType" value="Faculty"> Faculty
+                    <p class="error" id="userTypeError"></p>
+                </div>
+                <br>
+                <div style="margin-left: 18%;">
+                    <button type="submit" style="background-color: darkgray; padding: 3px; padding-left: 6px; padding-right: 6px;">Submit</button>
+                    <span>&emsp;&ensp;</span>
+                    <button type="reset" style="background-color: darkgray; padding: 3px; padding-left: 6px; padding-right: 6px;">Reset</button>
+                </div>
+                <div><br>_________________________________ <br></div>
+                <br>
+                <div style="margin-left: 8%; margin-bottom: 7%;">
+					<button type="button" style="background-color: darkgray; padding-bottom: 3px; padding-left: 6px; padding-right: 6px;">Register Using Microsoft 365&ensp;<img src="{{url_for("static", filename="cloud.png")}}" alt="Microsoft365" width="15px" style="padding-top: 3px;"></button>
+                </div>
+                <div><br>_________________________________ <br></div>
+                <div style="text-align: center;"><p>Already have an account?</p>
+                    <a href="/login">Click here to login instead</a></div>
+            </form>
+        </div>
+    </div>
+    <div class="slider">
+        <div class="slide"></div>
+    </div>
+</body>
+
+</html>
