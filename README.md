@@ -1,0 +1,1 @@
+This Repository contains two of my Web Development based projects. One of them is an Alumni Website made with a combination of HTML, CSS, Javascript, Flask with Python, MySQL. The Final folder on the other hand contains a Data Visualization Project using HTML, CSS, Javascript with the Plotly library. 
